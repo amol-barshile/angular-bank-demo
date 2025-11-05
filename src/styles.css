@@ -1,0 +1,16 @@
+.width100 {
+    width: 100%;
+}
+
+.max-width400 {
+    max-width: 400px
+}
+
+.color-red {
+    color: red;
+}
+
+.center {
+    text-align: center;
+    display: block;
+}

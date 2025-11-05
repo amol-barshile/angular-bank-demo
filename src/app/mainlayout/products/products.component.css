@@ -1,0 +1,9 @@
+/* .container {
+    max-width: 600px;
+    margin: 20px auto;
+} */
+
+button {
+    display: block;
+    width: 100%;
+}
