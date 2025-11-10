@@ -1,4 +1,4 @@
-<div class="modal fade" tabindex="-1" #modalElement>
+<div class="modal fade" [ngClass]="modalSize" tabindex="-1" aria-hidden="true" #modalElement>
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -8,10 +8,6 @@
             <div class="modal-body">
                 <ng-content></ng-content>
             </div>
-            <!-- <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" (click)="close()">Close</button>
-                <button type="button" class="btn btn-primary" (click)="confirm()">Save</button>
-            </div> -->
         </div>
     </div>
 </div>

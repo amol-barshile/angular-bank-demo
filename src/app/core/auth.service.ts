@@ -3,28 +3,23 @@ import { Injectable } from "@angular/core"
 import { Router } from "@angular/router"
 import { JwtHelperService } from "@auth0/angular-jwt"
 import { Observable } from "rxjs"
-
-export interface User {
-    username: string
-    email: string
-    password: string
-}
+import { APIURL } from "../constants/app.constant"
+import { User } from "../models/user.model"
 
 @Injectable({
     providedIn: 'root',
 })
 export class AuthService {
-    private apiUrl = 'http://localhost:3000/auth';
     private jwtHelper = new JwtHelperService();
 
     constructor(private http: HttpClient, private router: Router) { }
 
     register(user: User): Observable<any> {
-        return this.http.post<any>(`${this.apiUrl}/register`, user)
+        return this.http.post<any>(`${APIURL}/auth/register`, user)
     }
 
     login(user: any): Observable<any> {
-        return this.http.post<any>(`${this.apiUrl}/login`, user)
+        return this.http.post<any>(`${APIURL}/auth/login`, user)
     }
 
     logout() {

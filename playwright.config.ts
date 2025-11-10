@@ -4,6 +4,8 @@ export default defineConfig({
     testDir: './src/e2e',  // <-- here, point to src/e2e
     timeout: 30 * 1000,
     use: {
+        baseURL: 'http://localhost:4200', // Angular dev server
+        browserName: 'chromium',
         headless: true,
         viewport: { width: 1280, height: 720 },
         actionTimeout: 5000,

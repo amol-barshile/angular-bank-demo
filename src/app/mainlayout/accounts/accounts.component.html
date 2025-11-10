@@ -1,0 +1,81 @@
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h3>Account List</h3>
+        <button class="btn btn-primary" (click)="openNewAccountModal()">Create New Account</button>
+    </div>
+
+    <table class="table" *ngIf="accounts.length !=0">
+        <thead>
+            <tr>
+                <th>Sr.No</th>
+                <th>Account Number</th>
+                <th>Balance(₹)</th>
+                <th>Account Type</th>
+                <th class="text-center">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let account of accounts; let i = index">
+                <td>{{ i + 1 }}</td>
+                <td>{{ account.accountNumber }}</td>
+                <td>{{ account.balance | currency:'INR':'symbol':'1.0-0' }}</td>
+                <td>{{ account.accountType }}</td>
+                <td class="text-center">
+                    <!-- <button class="btn btn-sm btn-primary me-1" (click)="editProduct(product)">Edit</button> -->
+                    <button class="btn btn-sm btn-info text-white me-1" (click)="viewAccountTransactions(account)">View
+                        Transactions</button>
+                    <!-- <button class="btn btn-sm btn-danger" (click)="openDeleteProductModal(product)">Delete</button> -->
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <span *ngIf="accounts.length === 0">
+        No RecordsFound!!!
+    </span>
+</div>
+
+<app-modal #addModal title="Add Account">
+    <form [formGroup]="newAccountForm" (ngSubmit)="onSubmit()" class="bg-white rounded width100">
+
+        <div class="mb-3">
+            <label for="accountType" class="form-label">Account Type<span class="required">*</span></label>
+            <select id="accountType" class="form-select" formControlName="accountType">
+                <option value="" disabled selected>Select an account type</option>
+                <option *ngFor="let types of accountTypes" [value]="types.value">
+                    {{ types.label }}
+                </option>
+            </select>
+        </div>
+        <span class="required center" *ngIf="error"> {{ error }}</span>
+        <div class="d-flex justify-content-end">
+            <button class="btn btn-primary me-2">Add</button>
+            <button class="btn btn-secondary" (click)="closeNewAccountModal()">Cancel</button>
+        </div>
+
+
+    </form>
+</app-modal>
+
+<app-modal #viewModal title="Transaction Details" modalSize="modal-lg">
+    <div class="container">
+        <table class="table">
+            <thead class="table-dark">
+                <tr>
+                    <th>Sr.No</th>
+                    <th>Transaction Type</th>
+                    <th>Amount(₹)</th>
+                    <th>Current Amount(₹)</th>
+                </tr>
+            </thead>
+            <tbody>
+            <tbody>
+                <tr *ngFor="let transaction of transactions; let i = index">
+                    <td>{{ i+1 }}</td>
+                    <td>{{ transaction.type }}</td>
+                    <td>{{ transaction.amount | currency:'INR':'symbol':'1.0-0' }}</td>
+                    <td>{{ transaction.balanceAfter | currency:'INR':'symbol':'1.0-0'}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</app-modal>

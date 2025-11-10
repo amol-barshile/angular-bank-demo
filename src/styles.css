@@ -6,11 +6,11 @@
     max-width: 400px
 }
 
-.color-red {
-    color: red;
-}
-
 .center {
     text-align: center;
     display: block;
+}
+
+.required {
+    color: red;
 }

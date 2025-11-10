@@ -2,13 +2,13 @@
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="p-4 bg-white rounded shadow width100 max-width400">
         <h3 class="mb-4 text-center">Login</h3>
         <div class="mb-3">
-            <label for="inputUsername" class="form-label">Username</label>
-            <input type="username" class="form-control" id="inputUsername" placeholder="Enter username"
-                formControlName="username" />
+            <label for="inputEmail" class="form-label">Email</label>
+            <input type="email" class="form-control" id="inputEmail" placeholder="Enter email"
+                formControlName="email" />
         </div>
         <div class="mb-3">
             <label for="inputPassword" class="form-label">Password</label>
-            <input type="password" class="form-control" id="inputPassword" placeholder="Password"
+            <input type="password" class="form-control" id="inputPassword" placeholder="Enter Password"
                 formControlName="password" />
         </div>
         <div class="mb-3 form-check">
@@ -17,9 +17,8 @@
         </div>
         <button type="submit" class="btn btn-primary w-100" [disabled]="loginForm.invalid">Login</button>
 
-        <!-- <div class="alert alert-danger alert-dismissible fade show" role="alert"> -->
-        <span class="color-red center" *ngIf="error"> {{ error }}</span>
-        <!-- </div> -->
+        <span class="required center" *ngIf="error"> {{ error }}</span>
+
         <div class="text-center mt-3">
             <a routerLink="/register">Register New User</a>
         </div>

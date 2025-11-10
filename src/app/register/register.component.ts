@@ -20,13 +20,18 @@ export class RegisterComponent {
 
   ngOnInit() {
     this.registerForm = this.fb.group({
-      username: ['', [Validators.required, Validators.minLength(3)]],
+      name: ['', [Validators.required, Validators.minLength(3)]],
+      email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
     })
   }
 
-  get username() {
-    return this.registerForm.get('username')!
+  get name() {
+    return this.registerForm.get('name')!
+  }
+
+  get email() {
+    return this.registerForm.get('email')!
   }
 
   get password() {
@@ -38,7 +43,8 @@ export class RegisterComponent {
       this.authService.register(this.registerForm.value).subscribe({
         next: (response) => {
           alert('Registration successful!')
-          this.router.navigate(['/login'])
+          localStorage.setItem('token', response.access_token)
+          this.router.navigate(['/home'])
         },
         error: (error) => {
           console.error('Registration failed', error.error.message)

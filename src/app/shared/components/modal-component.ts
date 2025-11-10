@@ -11,6 +11,7 @@ import { Modal } from 'bootstrap'
 })
 export class ModalComponent {
     @Input() title = 'Modal Title';
+    @Input() modalSize: string | undefined
     @ViewChild('modalElement', { static: true }) modalElement!: ElementRef
     private modalInstance!: Modal
 
@@ -26,8 +27,8 @@ export class ModalComponent {
         this.modalInstance.hide()
     }
 
-    // confirm() {
-    //     // Custom event or callback could be triggered here
-    //     this.close()
-    // }
+    confirm() {
+        // Custom event or callback could be triggered here
+        this.close()
+    }
 }
