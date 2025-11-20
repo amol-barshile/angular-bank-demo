@@ -22,7 +22,7 @@ export class WithdrawDepositComponent implements OnInit {
     this.withdrawDepositForm = this.fb.group({
       accountId: ['', [Validators.required]],
       amount: ['', [Validators.required]],
-      action: ['', [Validators.required]]
+      action: [null, [Validators.required]]
     })
     this.getAccountList()
   }

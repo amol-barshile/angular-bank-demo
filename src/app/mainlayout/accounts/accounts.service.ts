@@ -37,4 +37,12 @@ export class AccountsService {
         return this.http.post<any>(`${APIURL}/transactions/withdraw`, { accountId, amount })
     }
 
+    selfTransfer(fromAccountId: string, toAccountId: string, amount: string): Observable<any> {
+        return this.http.post<any>(`${APIURL}/transactions/transfer`, { fromAccountId, toAccountId, amount })
+    }
+
+    getAllTransactionByLimit(limit: number): Observable<any> {
+        return this.http.get<any>(`${APIURL}/transactions/latest?limit=${limit}`)
+    }
+
 }

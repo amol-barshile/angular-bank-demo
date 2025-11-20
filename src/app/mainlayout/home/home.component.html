@@ -1,2 +1,26 @@
-<p>Display a summary of all accounts and their balances.</p>
-<p>Show recent transactions in a tabular format.</p>
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h3>Transaction Summary</h3>
+    </div>
+
+    <table class="table">
+        <thead class="table-dark">
+            <tr>
+                <th>Sr.No</th>
+                <th>Account Number</th>
+                <th>Transaction Type</th>
+                <th>Amount(₹)</th>
+                <th>Balance(₹)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let transaction of transactionSummary; let i = index">
+                <td>{{ i+1 }}</td>
+                <td>{{ transaction.accountnumber }}</td>
+                <td>{{ transaction.type }}</td>
+                <td>{{ transaction.amount | currency:'INR':'symbol':'1.0-0' }}</td>
+                <td>{{ transaction.balance | currency:'INR':'symbol':'1.0-0'}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

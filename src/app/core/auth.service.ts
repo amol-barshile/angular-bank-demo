@@ -36,4 +36,8 @@ export class AuthService {
         return token != null && !this.jwtHelper.isTokenExpired(token)
     }
 
+    getEmpData() {
+        return this.http.get<any[]>('assets/emp.json')
+    }
+
 }

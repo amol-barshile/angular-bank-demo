@@ -14,7 +14,7 @@ import { AuthService } from '../core/auth.service'
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup
   error: string | undefined
-
+  employees: any
   constructor(private fb: FormBuilder, private router: Router, private authService: AuthService) { }
 
   ngOnInit() {
